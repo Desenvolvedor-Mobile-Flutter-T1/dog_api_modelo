@@ -1,0 +1,31 @@
+flavors:
+  dev:
+    app:
+      name: "Dogão - Dev"
+    android:
+      applicationId: "br.com.rafael.gerencia_estado_injecao_dependencia.dev"  
+      icon: "assets/images/dog-dev.png"
+      adaptiveIcon:
+        foreground: "assets/images/dog-dev.png"
+        background: "assets/images/dev-background.png"
+        monochrome: "assets/images/dog-dev.png"      
+  staging:
+    app:
+      name: "Dogão - Homolog"
+    android:
+      applicationId: "br.com.rafael.gerencia_estado_injecao_dependencia.staging"        
+      icon: "assets/images/dog-dev.png"
+      adaptiveIcon:
+        foreground: "assets/images/dog-dev.png"
+        background: "assets/images/prod-background.png"
+        monochrome: "assets/images/dog-dev.png"   
+  prod:
+    app:
+      name: "Dogão"
+    android:
+      applicationId: "br.com.rafael.gerencia_estado_injecao_dependencia"
+      icon: "assets/images/dog.png"
+      adaptiveIcon:
+        foreground: "assets/images/dog.png"
+        background: "assets/images/prod-background.png"
+        monochrome: "assets/images/dog.png"     

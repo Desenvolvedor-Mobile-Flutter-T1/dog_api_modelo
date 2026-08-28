@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "App (DEV)",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "dev",
+                "-t",
+                "lib/main.dart"
+            ]
+        },
+        {
+            "name": "App (HOMOLOG)",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "staging",
+                "-t",
+                "lib/main.dart"
+            ]
+        },
+        {
+            "name": "App (PROD)",
+            "request": "launch",
+            "type": "dart",
+            "args": [
+                "--flavor",
+                "prod",
+                "-t",
+                "lib/main.dart"
+            ]
+        }
+    ]
+}

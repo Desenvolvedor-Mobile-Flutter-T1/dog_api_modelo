@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gerencia_estado_injecao_dependencia/core/app_injection.dart';
+import 'package:gerencia_estado_injecao_dependencia/flavors.dart';
 import 'package:gerencia_estado_injecao_dependencia/src/blocs/home/home_bloc.dart';
 
 class HomeView extends StatefulWidget {
@@ -23,13 +24,15 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(title: Text('Flavors: ${F.title}')),
       body: BlocBuilder<HomeBloc, HomeState>(
         bloc: bloc,
         builder: (context, state) {
           if (state is HomeSuccess) {
             return Column(
               children: [
+                if (F.isDev)
+                  ListTile(title: Text('Card que só habilita como dev')),
                 Text(state.breed.name),
                 Text(state.breed.origin),
                 Text(state.breed.temperament),
