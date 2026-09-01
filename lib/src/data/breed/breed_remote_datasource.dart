@@ -1,7 +1,7 @@
 import 'package:gerencia_estado_injecao_dependencia/src/shared/app_client/app_client.dart';
 
-sealed class IBreedRemoteDatasource {
-  Future<Map<String, dynamic>> getBreed();
+abstract class IBreedRemoteDatasource {
+  Future<Map<String, dynamic>> getBreed({required String animal});
 }
 
 class BreedRemoteDatasourceImpl implements IBreedRemoteDatasource {
@@ -10,7 +10,7 @@ class BreedRemoteDatasourceImpl implements IBreedRemoteDatasource {
   BreedRemoteDatasourceImpl({required this.client});
 
   @override
-  Future<Map<String, dynamic>> getBreed() async {
+  Future<Map<String, dynamic>> getBreed({required String animal}) async {
     final result = await client.get(
       url: 'https://api.thedogapi.com/v1/breeds/1',
       header: {

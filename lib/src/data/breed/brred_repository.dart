@@ -2,7 +2,7 @@ import 'package:gerencia_estado_injecao_dependencia/src/data/breed/breed_model.d
 import 'package:gerencia_estado_injecao_dependencia/src/data/breed/breed_remote_datasource.dart';
 import 'package:gerencia_estado_injecao_dependencia/src/shared/app_exceptions.dart';
 
-sealed class IBreedRepository {
+abstract class IBreedRepository {
   Future<BreedModel> getBreed();
 }
 
@@ -14,10 +14,10 @@ class BreedRepositoryImpl implements IBreedRepository {
   @override
   Future<BreedModel> getBreed() async {
     try {
-      final result = await datasource.getBreed();
+      final result = await datasource.getBreed(animal: 'cachorro');
 
       return BreedModel.fromMap(result);
-    } on TypeError  {
+    } on TypeError {
       throw ConvertDataException();
     } catch (e) {
       rethrow;
