@@ -1,6 +1,6 @@
 part of 'home_bloc.dart';
 
-sealed class HomeState {}
+abstract class HomeState {}
 
 final class HomeInitial extends HomeState {}
 

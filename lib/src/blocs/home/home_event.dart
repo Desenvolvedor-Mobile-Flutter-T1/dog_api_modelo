@@ -1,5 +1,5 @@
 part of 'home_bloc.dart';
 
-sealed class HomeEvent {}
+abstract class HomeEvent {}
 
 final class HomeEventGetBreed extends HomeEvent {}

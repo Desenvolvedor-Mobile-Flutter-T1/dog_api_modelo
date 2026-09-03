@@ -1,6 +1,6 @@
 import 'package:gerencia_estado_injecao_dependencia/src/shared/app_client/app_client.dart';
 
-sealed class IBreedRemoteDatasource {
+abstract class IBreedRemoteDatasource {
   Future<Map<String, dynamic>> getBreed();
 }
 

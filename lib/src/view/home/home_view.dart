@@ -13,11 +13,17 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   late final HomeBloc bloc;
+  late final TextEditingController controller;
+  late final TextEditingController passController;
+
+  bool obscurePass = true;
 
   @override
   void initState() {
     bloc = injection.get<HomeBloc>();
     bloc.add(HomeEventGetBreed());
+    controller = TextEditingController();
+    passController = TextEditingController();
     super.initState();
   }
 
@@ -31,11 +37,74 @@ class _HomeViewState extends State<HomeView> {
           if (state is HomeSuccess) {
             return Column(
               children: [
+                TextFormField(
+                  controller: controller,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                  decoration: InputDecoration(
+                    suffixIcon: controller.text.isEmpty
+                        ? null
+                        : IconButton(
+                            onPressed: () {
+                              setState(() {
+                                controller.clear();
+                              });
+                            },
+                            icon: Icon(Icons.close),
+                          ),
+                  ),
+                ),
+                TextFormField(
+                  controller: passController,
+                  onChanged: (value) {
+                    setState(() {});
+                  },
+                  obscureText: obscurePass,
+                  decoration: InputDecoration(
+                    suffixIcon: obscurePass
+                        ? IconButton(
+                            onPressed: () {
+                              setState(() {
+                                obscurePass = !obscurePass;
+                              });
+                            },
+                            icon: Icon(Icons.visibility),
+                          )
+                        : IconButton(
+                            onPressed: () {
+                              setState(() {
+                                obscurePass = !obscurePass;
+                              });
+                            },
+                            icon: Icon(Icons.visibility_off),
+                          ),
+                  ),
+                ),
                 if (F.isDev)
                   ListTile(title: Text('Card que só habilita como dev')),
                 Text(state.breed.name),
                 Text(state.breed.origin),
                 Text(state.breed.temperament),
+                ElevatedButton(
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(title: Text('Minha Dialog'));
+                      },
+                    );
+                  },
+                  child: Text('Abrir dialog'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    ScaffoldMessenger.of(
+                      context,
+                    ).showSnackBar(SnackBar(content: Text('Aqui snackbar')));
+                  },
+                  child: Text('Chamar Snackbar'),
+                ),
               ],
             );
           }

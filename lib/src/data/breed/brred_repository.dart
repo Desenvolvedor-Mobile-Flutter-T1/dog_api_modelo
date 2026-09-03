@@ -17,7 +17,7 @@ class BreedRepositoryImpl implements IBreedRepository {
       final result = await datasource.getBreed();
 
       return BreedModel.fromMap(result);
-    } on TypeError  {
+    } on TypeError {
       throw ConvertDataException();
     } catch (e) {
       rethrow;
